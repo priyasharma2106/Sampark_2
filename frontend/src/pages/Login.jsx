@@ -126,7 +126,7 @@ const Login = () => {
               </p>
               <div className="text-xs space-y-1 text-center">
                 <p><strong>{t('auth:login.demo_admin')}:</strong> admin / admin123</p>
-                <p><strong>{t('auth:login.demo_staff')}:</strong> staff / staff123</p>
+                <p><strong>{t('auth:login.demo_staff')}:</strong> ramesh.kumar / password123</p>
               </div>
             </div>
           </div>

@@ -30,17 +30,21 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# Configure CORS - Allow custom domains and Vercel deployments
+# Configure CORS - allow configured origins + known production domains
+configured_origins = settings.cors_origins_list
+default_origins = [
+    "https://thesampark.tech",
+    "https://www.thesampark.tech",
+    "https://sampark.vercel.app",
+    "https://sampark-delta.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:3000",
+]
+allowed_origins = list(dict.fromkeys(configured_origins + default_origins))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://thesampark.tech",
-        "https://www.thesampark.tech",
-        "https://sampark.vercel.app",
-        "https://sampark-delta.vercel.app",
-        "http://localhost:5173",
-        "http://localhost:3000",
-    ],
+    allow_origins=allowed_origins,
     allow_origin_regex=r"https://.*\.vercel\.app",  # Allow all Vercel preview URLs
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],

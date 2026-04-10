@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     """Application settings loaded from environment variables"""
     
     # Database
-    DATABASE_URL: str
+    DATABASE_URL: str = "postgresql://neondb_owner:npg_HLtbo4ZkWq6f@ep-wild-rain-am8bonjf.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require"
     
     # JWT Authentication
     SECRET_KEY: str
